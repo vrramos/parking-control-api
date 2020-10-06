@@ -2,7 +2,7 @@ module Api
 	module V1
 		class ParkingController < ApplicationController
 
-			# Listar todos os artigos
+			# Listar todos veículos
 			def index
 				puts request.raw_post
 				list_all = Parking.order('created_at');
@@ -24,7 +24,7 @@ module Api
 			def parking_params
 				params.permit(:plate)
 			end
-			
+
 		end
 	end
 end
