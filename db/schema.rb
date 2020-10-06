@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201005212636) do
+ActiveRecord::Schema.define(version: 20201006182527) do
 
   create_table "parkings", force: :cascade do |t|
     t.string "plate"
+    t.string "time"
+    t.boolean "paid"
+    t.boolean "left"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -2,6 +2,12 @@
 
 one:
   plate: MyString
+  time: MyString
+  paid: false
+  left: false
 
 two:
   plate: MyString
+  time: MyString
+  paid: false
+  left: false
