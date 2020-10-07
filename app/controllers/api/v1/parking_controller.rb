@@ -22,18 +22,15 @@ module Api
 				data = Parking.where("plate = ?", params[:id])
 				created = data.map { |vehicle| "#{vehicle.created_at}"}
 				created_string = created.join(', ')
-				get_hour = get_time(created_string)
+				get_hour_regex = get_time(created_string)
 				t = Time.now
 				a = t.strftime('%H:%M:%S')
-				string_again = get_hour.join(', ')
-				puts string_again
-				puts a
+				string_again = get_hour_regex.join(', ')
+				total_minutes = (Time.parse(a) - Time.parse(string_again)) / 60
+				
+				data_att = data.each{ |key| key.time="#{total_minutes.round(2)} minutes"}
 
-
-				# puts created_string
-				# minutes = ((updated - created) * 24 * 60).to_i
-				# a.class
-				render json: {data:data},status: :ok
+				render json: {data:data_att},status: :ok
 			end
 			
 			# Cadastra um novo veículo.
