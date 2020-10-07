@@ -9,8 +9,8 @@
 5.times  do
 	Parking.create({
 		plate: "AAA-9999",
-		time: '25 minutes',
-		paid: 'true',
+		time: '',
+		paid: 'false',
 		left: 'false',
 	})
 end
