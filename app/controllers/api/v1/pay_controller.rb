@@ -1,5 +1,3 @@
-require 'json'
-
 module Api
 	module V1
     class PayController < ApplicationController
@@ -7,9 +5,9 @@ module Api
       def update
 				paid = Parking.find(params[:id])
 				if paid.update_attributes(paid_params)
-					render json: {message:'Payment Made'},status: :ok
+					render json: {message:'Payment Received'},status: :ok
 				else
-					render json: {message:'Pagamento não realizado'},status: :unprocessable_entity
+					render json: {message:'Payment Not Accepted'},status: :unauthorized
 				end
 			end
 

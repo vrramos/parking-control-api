@@ -9,7 +9,7 @@ module Api
 					get_out.update_attributes(out_params)
 					render json: {message: 'You can go out. Thanks!'},status: :ok
 				else
-					render json: {message: 'Pay First.'},status: :ok
+					render json: {message: 'Pay First.'},status: :unauthorized
 				end
 			end
 			
