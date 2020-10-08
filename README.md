@@ -1,6 +1,14 @@
+# Iniciando o projeto:
+- Para a realização do projeto, foi utliziado o SO Windows 10 e o [RailsInstaler](http://railsinstaller.org/pt-BR).
+- Utilize os seguintes comandos:
+  - bundle install
+  - rails db:migrate
+  - rails routes
+  - rails server
+
 # Rotas
-## Post /parking
-- A placa deve estar no formado AAA-9999
+## POST /parking
+- A placa deve estar no formado **AAA-9999**.
 
 - O body da requisição deve ter o seguinte formato:
 ```json
