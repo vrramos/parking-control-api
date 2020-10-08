@@ -4,12 +4,6 @@ require 'services'
 module Api
 	module V1
 		class ParkingController < ApplicationController
-
-			def index
-				all = Parking.order('created_at')
-				render json: {data:all},status: :ok
-			end
-
 			# Listar veículo por placa
 			def show
 				services = Services.new
