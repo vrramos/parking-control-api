@@ -24,14 +24,13 @@ module Api
 			def create
 				services = Services.new
 				new_vehicle = Parking.new(parking_params)
+				license_plate = JSON.parse(request.body.read)['plate']
 
-				if new_vehicle.save
-					license_plate = JSON.parse(request.body.read)['plate']
-					if services.mask_plate(license_plate)
-						render json: {vehicle_identification:new_vehicle.id},status: :created
-					else
-						render json: {message: 'Plate Format Invalid.'},status: :unauthorized
-					end
+				if services.mask_plate(license_plate)
+					new_vehicle.save
+					render json: {vehicle_identification:new_vehicle.id},status: :created
+				elsif
+					render json: {message: 'Plate Format Invalid.'},status: :unauthorized
 				else
 					render json: {status: 'ERROR', data:newVehicle.erros},status: :unprocessable_entity
 				end

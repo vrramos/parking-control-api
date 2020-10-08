@@ -12,7 +12,7 @@ module Api
 					client.save
 					render json: {message:'Payment Accepted'},status: :unauthorized
 				else	
-					render json: {message:'Payment Not Accepted'},status: :unauthorized
+					render json: {message:'ERROR'},status: :unprocessable_entity
 				end
 			end
 

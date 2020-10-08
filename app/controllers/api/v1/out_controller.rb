@@ -12,7 +12,7 @@ module Api
 				elsif client.paid == false
 					render json: {message: 'Pay First'},status: :unauthorized
 				else	
-					render json: {message:'Payment Not Accepted'},status: :unauthorized
+					render json: {message:'ERROR'},status: :unprocessable_entity
 				end
 			end
 
