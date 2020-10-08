@@ -1,7 +1,7 @@
 module Api
 	module V1
 		class OutController < ApplicationController
-      
+			
       def update
 				client = Parking.find(params[:id])
 

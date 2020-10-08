@@ -6,7 +6,7 @@ module Api
 				client = Parking.find(params[:id])
 
 				if client.paid
-					render json: {message:'Pagamento Já foi realizado!'},status: :ok
+					render json: {message:'Payment has already been made!'},status: :ok
 				elsif client.paid == false
 					client.paid = true
 					client.save
