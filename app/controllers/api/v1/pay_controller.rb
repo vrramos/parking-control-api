@@ -3,18 +3,17 @@ module Api
     class PayController < ApplicationController
       
       def update
-				paid = Parking.find(params[:id])
-				if paid.update_attributes(paid_params)
-					render json: {message:'Payment Received'},status: :ok
-				else
+				client = Parking.find(params[:id])
+
+				if client.paid
+					render json: {message:'Pagamento Já foi realizado!'},status: :ok
+				elsif client.paid == false
+					client.paid = true
+					client.save
+					render json: {message:'Payment Accepted'},status: :unauthorized
+				else	
 					render json: {message:'Payment Not Accepted'},status: :unauthorized
 				end
-			end
-
-			# Parametros aceitos
-			private
-			def paid_params
-				params.permit(:paid)
 			end
 
 		end

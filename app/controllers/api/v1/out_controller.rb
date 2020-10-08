@@ -3,20 +3,17 @@ module Api
 		class OutController < ApplicationController
       
       def update
-				get_out = Parking.find(params[:id])
+				client = Parking.find(params[:id])
 
-				if get_out.paid
-					get_out.update_attributes(out_params)
+				if client.paid
+					client.left = true
+					client.save
 					render json: {message: 'You can go out. Thanks!'},status: :ok
-				else
-					render json: {message: 'Pay First.'},status: :unauthorized
+				elsif client.paid == false
+					render json: {message: 'Pay First'},status: :unauthorized
+				else	
+					render json: {message:'Payment Not Accepted'},status: :unauthorized
 				end
-			end
-			
-			# Parametros aceitos
-			private
-			def out_params
-				params.permit(:left)
 			end
 
 		end
