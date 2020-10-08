@@ -17,7 +17,7 @@ module Api
 				total_minutes = services.calculating_time(data)
 				data_att = data.each{ |key| key.time="#{total_minutes.round(2)} minutes"}
 
-				render json: {data:data_att},status: :ok
+				render json: {vehicle_information:data_att},status: :ok
 			end
 			
 			# Cadastra um novo veículo.
@@ -30,7 +30,7 @@ module Api
 					new_vehicle.save
 					render json: {vehicle_identification:new_vehicle.id},status: :created
 				elsif
-					render json: {message: 'Plate Format Invalid.'},status: :unauthorized
+					render json: {message: 'Plate Format Invalid'},status: :unauthorized
 				else
 					render json: {status: 'ERROR', data:newVehicle.erros},status: :unprocessable_entity
 				end

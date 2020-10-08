@@ -1,24 +1,75 @@
-# README
+# Rotas
+## Post /parking
+- A placa deve estar no formado AAA-9999
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- O body da requisição deve ter o seguinte formato:
+```json
+{
+  "plate": "FAA-1234"
+}
+```
 
-Things you may want to cover:
+- Se a placa não estiver no formato correto, retorna um status http 401 e a seguinte mensagem:
+```json
+{
+  "message": "Plate Format Invalid"
+}
+```
 
-* Ruby version
+- Se tudo estiver correto, retorna o status http 201 e a identificação do veículo:
+```json
+{
+  "vehicle_identification": 1
+}
+```
 
-* System dependencies
+## PUT out/:id
 
-* Configuration
+- Caso tente sair sem realizar o pagamento, retorna o status http 401 e a seguinte mensagem:
+```json
+{
+  "message": "Pay First"
+}
+```
 
-* Database creation
+- Se o pagamento foi realizado, retorna o status http 200 e a seguinte mensagem:
+```json
+{
+  "message": "You can go out. Thanks!"
+}
+```
 
-* Database initialization
+## PUT pay/:id
 
-* How to run the test suite
+- Caso tente realizar o pagamento pela segunda vez ou mais, retorna o status http 401 e a seguinte mensagem:
+```json
+{
+  "message": "Payment has already been made!"
+}
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+- Ao realizar o pagamento, retorna um status 200 e a mensagem:
+```json
+{
+  "message": "Payment Accepted"
+}
+```
 
-* Deployment instructions
+## GET /parking/:plate
 
-* ...
+- Retorna um status http 200 e o histórico da placa desejada:
+```json
+{
+  "vehicle_information": [
+      {
+        "id": 1,
+        "plate": "ABC-5555",
+        "time": "55.03 minutes",
+        "paid": true,
+        "left": true,
+        "created_at": "2020-10-08T00:02:19.918Z",
+        "updated_at": "2020-10-08T00:28:39.851Z"
+      }
+  ]
+}
+```
