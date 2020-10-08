@@ -1,9 +1,8 @@
 # Iniciando o projeto:
-- Para a realização do projeto, foi utliziado o SO Windows 10 e o [RailsInstaler](http://railsinstaller.org/pt-BR).
+- Para a realização do projeto, foi utliziado o SO Windows 10 e o [RailsInstaller](http://railsinstaller.org/pt-BR).
 - Utilize os seguintes comandos:
   - bundle install
   - rails db:migrate
-  - rails routes
   - rails server
 
 # Rotas
