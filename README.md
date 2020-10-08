@@ -1,9 +1,9 @@
 # Iniciando o projeto:
 - Para a realização do projeto foi utliziado o SO Windows 10 e o pacotes necessários no [RailsInstaller](http://railsinstaller.org/pt-BR).
 - Utilize os seguintes comandos:
-  - bundle install -> Instala as dependências necessárias.
-  - rails db:migrate -> Cria a tabela necessária para salvar os dados. Foi utilizado o SQLite 3.
-  - rails server -> Inicia o servidor para acessar os endpoints.
+  - **bundle install** -> Instala as dependências necessárias.
+  - **rails db:migrate** -> Cria a tabela necessária para salvar os dados. Foi utilizado o SQLite 3.
+  - **rails server** -> Inicia o servidor para acessar os endpoints.
 
 # Rotas
 ## POST /parking
